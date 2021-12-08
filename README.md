@@ -6,16 +6,27 @@
 
 
 This repository contains code for the accepted paper *[Blind Inverse Gamma Correction with Maximized Differential Entropy](https://doi.org/10.1016/j.sigpro.2021.108427)*. 
-The best-restored image $I^{\gamma}$ is assumed with the largest entropy metric. Our GCME method obtains a closed-form solution via differential entropy and change-of-variables rule. As a result, our GCME is an exact (non-approximate), accurate, and fast gamma correction algorithm.
+The best-restored image 
+<img src="https://render.githubusercontent.com/render/math?math=I^\gamma">
+ is assumed with the largest entropy value. Our GCME method obtains a closed-form solution via differential entropy and change-of-variables rule. As a result, our GCME is an exact (non-approximate), accurate, and fast gamma correction algorithm.
 
-![results](https://github.com/yongleex/GCME/blob/375bf8d0a9ebb96336e72feae549a48780a029d9/images/results.png)
+
+![results](https://github.com/yongleex/GCME/blob/5d6a2be83f622543f7e04b9c4b15527086bff3d4/images/results.png)
 
 ### Motivation
 Maximum entropy has been proved to be an effective image prior because most good images should contain sufficient information. 
 Our motivation is very simple, the best gamma should maximize the entropy of transformed image.
-$$\gamma^* = \arg\max Entropy(I^\gamma)$$
+
+<p align="center">
+<img src="https://render.githubusercontent.com/render/math?math=\gamma^* = \arg\max Entropy(I^\gamma)">
+</p>
+
 Fortunately, we found a closed-form solution to this optimization problem.
-$$\gamma^* = -\frac{1}{\int_0^1 p_I(u)\ln(u)du}$$
+
+<p align="center">
+<img src="https://render.githubusercontent.com/render/math?math=\gamma^* = -\frac{1}{\int_0^1 p_I(u)\ln(u)du}">
+</p>
+
 which can be efficiently computed with one line Python script for an input image $I$ (pixel intensity range $(0,1)$)
 ```python
 gamma = -1/np.nanmean(np.log(I))
