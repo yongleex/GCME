@@ -27,8 +27,9 @@ Fortunately, we found a closed-form solution to this optimization problem.
 <img src="https://render.githubusercontent.com/render/math?math=\gamma^* = -\frac{1}{\int_0^1 p_I(u)\ln(u)du}">
 </p>
 
-which can be efficiently computed with one line Python script for an input image $I$ (pixel intensity range $(0,1)$)
+which can be efficiently computed with one line Python script for an input image,
 ```python
+# I is the input, and pixel intensity in range (0,1)
 gamma = -1/np.nanmean(np.log(I))
 ```
 More info is referred to the [paper](https://doi.org/10.1016/j.sigpro.2021.108427).
